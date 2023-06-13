@@ -108,13 +108,12 @@ ex) ./liar_client 10.0.2.15 9876 hd
 게임 status들은 liardb라는 데이터베이스안에 statuses 테이블에 자동으로 저장된다. 
 이는 log_sub를 실행시키면 자동적으로 이루어지는 과정이다.
 ### 데이터베이스 테이블 확인하는 방법
-1️⃣ sudo systemctl start mysql
-
-2️⃣ sudo systemctl enable mysql
-
-3️⃣ sudo /mysql -u root -p
-
-4️⃣ 테이블 살펴보기
+```
+$ sudo systemctl start mysql
+$ sudo systemctl enable mysql
+$ sudo /mysql -u root -p
+```
+- 테이블 살펴보기
 ```
 mysql> SELECT * FROM liardb.statuses;
 ```
