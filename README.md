@@ -84,7 +84,7 @@ $ sudo gcc log_sub.c -o log_sub -lmosquitto -lmysqlclient
 - 매번 게임을 시작할 때마다 해야한다.
 ```
 $ sudo systemctl stop mosquitto
-$ mosquitto -v
+$ mosquitto -v //브로커 실행
 ```
 5️⃣ server를 위해 터미널 하나를 새로 열어준다.
 ```
