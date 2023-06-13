@@ -17,7 +17,7 @@
 
 ## 2. 추가 setting
 - 본 프로젝트에서는 tcp와 mosquitto를 사용하여 게임을 구현하였다. 또한 MYSQL을 이용하여 게임의 상황을 저장할 수 있는 database를 구축하였다.
-- [mosquitto 설치방법](#HOW TO INSTALL MOSQUITTO)
+- [mosquitto 설치방법](#HOW-TO-INSTALL-MOSQUITTO)
 - [mysql 설치방법]
 
 ## HOW TO INSTALL MOSQUITTO
