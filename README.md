@@ -16,12 +16,13 @@
 실제 구축 환경은 __VirtualBox__ 을 이용하여 __우분투(Ubuntu)__ 를 사용하였다. 
 
 ## 2. 추가 setting
-- 본 프로젝트에서는 tcp와 mosquitto를 사용하여 게임을 구현하였다. 또한 MYSQL을 이용하여 게임의 상황을 저장할 수 있는 database를 구축하였다.
+- 본 프로젝트에서는 tcp와 mosquitto를 사용하여 게임을 구현하였다.   
+또한 MYSQL을 이용하여 게임의 상황을 저장할 수 있는 database를 구축하였다.
 - [mosquitto 설치방법](#HOW-TO-INSTALL-MOSQUITTO)
 - [mysql 설치방법](#HOW-TO_INSTALL-MYSQL)
 
 #### HOW TO INSTALL MOSQUITTO
-터미널에서 설치
+📍터미널에서 설치
 ```
 $ sudo apt-get update && sudo apt-get upgrade
 $ sudo apt-get install mosquitto
@@ -32,7 +33,7 @@ $ sudo apt install libmosquitto-dev
 ```
 
 #### HOW TO INSTALL MYSQL
-터미널에서 설치
+📍터미널에서 설치
 ```
 $ sudo apt-get install aptitude
 $ sudo aptitude install mysql-server
@@ -42,7 +43,7 @@ $ mysql_config --cflags
 ## 3. 실행방법
 - 시작하기 전 ip 주소를 알고 있어야 한다. 
 ```
-$ ip addr
+$ ip addr //를 통해 ip 확인
 ```
-를 통해 ip 확인
+
 
