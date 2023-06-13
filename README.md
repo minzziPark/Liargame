@@ -40,5 +40,9 @@ $ sudo aptitude install mysql-client
 $ mysql_config --cflags
 ```
 ## 3. 실행방법
-
+- 시작하기 전 ip 주소를 알고 있어야 한다. 
+```
+$ ip addr
+```
+를 통해 ip 확인
 
