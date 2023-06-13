@@ -48,7 +48,7 @@ $ sudo aptitude install mysql-client
 ## 3. 실행방법
 0️⃣ 시작하기 전 ip 주소를 알고 있어야 한다. (우분투의 기본 사용자 ip는 10.0.2.15 일 것이다.)
 ```
-$ ip addr //를 통해 ip 확인
+$ hostname -I
 ```
 
 1️⃣ mosquitto와 mysql을 설치한다.
