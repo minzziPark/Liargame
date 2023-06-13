@@ -1,3 +1,4 @@
+// MYSQL source code from "https://zetcode.com/db/mysqlc/"
 /*
  * This example shows how to write a client that subscribes to a topic and does
  * not do anything other than handle the messages that are received.
