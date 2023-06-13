@@ -13,7 +13,7 @@
 
 #define BUF_SIZE 128
 #define MAX_USER 8
-#define MIN_USER 1
+#define MIN_USER 3
 #define MQTT_HOST 	"127.0.0.1"
 #define MQTT_PORT	1883
 
@@ -567,7 +567,8 @@ const char* get_word(int num)
 /* This function pretends to read some data from a sensor and publish it.*/
 void publish_sensor_data(struct mosquitto *mosq)
 {
-	char topics[4][30] = {  "all", "citizen", "log", "00"};
+	char topics[3][30] = {  "all", "log", "00"};
+	char not_topics[8][30] = { "ME1", "ME2", "ME3", "ME4","ME5","ME6","ME7","ME8"};
 	char payload[1024];
 	const char* temp1;
     const char* temp2;
@@ -592,11 +593,11 @@ void publish_sensor_data(struct mosquitto *mosq)
 		char liars[2] =  {liar + '0'};
 		strcpy(MQTT_TOPIC_LIAR,"ME");
 		strcat(MQTT_TOPIC_LIAR, liars);
-		strcpy(topics[3], MQTT_TOPIC_LIAR);
+		strcpy(topics[2], MQTT_TOPIC_LIAR);
 		printf("Topic:%s\n", MQTT_TOPIC_LIAR);
 
 		// Publish three topics
-		for (i = 0; i < 4; i++)
+		for (i = 0; i < 3; i++)
 		{
 			if (i==0){
 				temp1 = get_topic(num);
@@ -623,10 +624,6 @@ void publish_sensor_data(struct mosquitto *mosq)
 											"Topic : %s", temp1);
 			}
 			else if(i==1){
-				temp2 = get_word(num);
-				snprintf(payload, sizeof(payload), "Word : %s\n\n", temp2);
-			}
-			else if(i==2){
 				time_t t;   // not a primitive datatype
 				time(&t);
 						
@@ -642,7 +639,7 @@ void publish_sensor_data(struct mosquitto *mosq)
 								"                             "
 								"Word : %s\n", s_time, game, user_cnt, liar, temp1, temp2);
 			}
-			else if(i==3){
+			else if(i==2){
 				snprintf(payload, sizeof(payload), "You are a Liar!! Good Luck\n\n");
 			}
 			rc = mosquitto_publish(mosq, NULL, topics[i], strlen(payload), payload, 2, true);
@@ -650,6 +647,18 @@ void publish_sensor_data(struct mosquitto *mosq)
 				fprintf(stderr, "Error publishing: %s\n", mosquitto_strerror(rc));
 			}
 			
+		}
+		int k;
+		for(k=0; k<8; k++){
+			if(strcmp(not_topics[k], MQTT_TOPIC_LIAR)!=0){
+				temp2 = get_word(num);
+				snprintf(payload, sizeof(payload), "Word : %s\n\n", temp2);
+				
+				rc = mosquitto_publish(mosq, NULL, not_topics[k], strlen(payload), payload, 2, true);
+				if(rc != MOSQ_ERR_SUCCESS){
+					fprintf(stderr, "Error publishing: %s\n", mosquitto_strerror(rc));
+				}
+			}
 		}
 			
 		p_cnt = 0;
