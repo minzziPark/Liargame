@@ -79,12 +79,16 @@ void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto_messag
 {
 	/* This blindly prints the payload, but the payload can be anything so take care. */
 	char log_msg[1024];
+	MYSQL_RES *result;
 	printf("%s\n", (char *)msg->payload);
-	sprintf(log_msg, "%s%s%s", "INSERT INTO statuses(status) VALUES('", (char *)msg->payload, "')");
+	sprintf(log_msg, "%s%s%s", "INSERT INTO liardb.statuses(status) VALUES('", (char *)msg->payload, "')");
+	printf("query : %s\n", log_msg);
 	if(mysql_query(con, log_msg))
 	{
 		finish_with_error(con);
 	}
+	result = mysql_store_result(con);
+	mysql_free_result(result);
 }
 
 
@@ -92,6 +96,7 @@ int main(int argc, char *argv[])
 {
 	struct mosquitto *mosq;
 	int rc;
+	MYSQL_RES * result;
 	con = mysql_init(NULL);
 
 	if(con == NULL)
@@ -119,8 +124,15 @@ int main(int argc, char *argv[])
 				mysql_close(con);
 				exit(1);
 			}
+			result = mysql_store_result(con);
+			mysql_free_result(result);
 		}
+		result = mysql_store_result(con);
+		mysql_free_result(result);
+
 		mysql_query(con, "USE liardb");
+		result = mysql_store_result(con);
+		mysql_free_result(result);
 	}
 
 	//create table
@@ -132,8 +144,12 @@ int main(int argc, char *argv[])
 			{
 				finish_with_error(con);
 			}
+			result = mysql_store_result(con);
+			mysql_free_result(result);
 		}
 	}
+	result = mysql_store_result(con);
+	mysql_free_result(result);
 
 	/* Required before calling other mosquitto functions */
 	mosquitto_lib_init();
