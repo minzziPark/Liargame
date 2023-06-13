@@ -18,7 +18,27 @@
 ## 2. 추가 setting
 - 본 프로젝트에서는 tcp와 mosquitto를 사용하여 게임을 구현하였다. 또한 MYSQL을 이용하여 게임의 상황을 저장할 수 있는 database를 구축하였다.
 - [mosquitto 설치방법](#HOW-TO-INSTALL-MOSQUITTO)
-- [mysql 설치방법]
+- [mysql 설치방법](#HOW-TO_INSTALL-MYSQL)
 
-## HOW TO INSTALL MOSQUITTO
+#### HOW TO INSTALL MOSQUITTO
+터미널에서 설치
+```
+$ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt-get install mosquitto
+$ sudo /etc/init.d/mosquitto status
+    // active(running)이라고 떠야함
+$ sudo apt update 
+$ sudo apt install libmosquitto-dev
+```
+
+#### HOW TO INSTALL MYSQL
+터미널에서 설치
+```
+$ sudo apt-get install aptitude
+$ sudo aptitude install mysql-server
+$ sudo aptitude install mysql-client 
+$ mysql_config --cflags
+```
 ## 3. 실행방법
+
+
