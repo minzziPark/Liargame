@@ -1,6 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Liar%20game&fontSize=90&animation=fadeIn&fontAlignY=38&desc=&descAlignY=51&descAlign=62)
 
-# <Mosquitto를 이용한 Liargame>
+# 🎮 Mosquitto를 이용한 Liargame 🎮
 
 라이어 게임이란 한가지 주제에 동일한 단어를 가지고 단 한 명의 라이어만 그 단어를 알지 못한 채 라이어를 찾아내는 게임이다.
 
