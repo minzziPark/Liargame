@@ -65,10 +65,13 @@ __❗️❗️ 여기서 중요한 것 ❗️❗️__
 ```
 $ mysql_config --cflags
 ```
-
+그리고 log_sub.c의 해더파일을 수정해주어야 한다. 기본적으로 아래와 같이 설정되어 있다.
 ```
-//그리고 liar_server.c의 해더파일을 수정해주어야 한다.
-
+#include "/usr/include/mysql/mysql.h"
+```
+만약 본인의 mysql의 위치가 /usr/bin/mysql 이라면 아래와 같이 수정해 주어야 한다.
+```
+#include "/usr/bin/mysql/mysql.h"
 ```
 3️⃣ 각 소스파일을 컴파일한다. (이때 mosquitto와 mysql이 정상 설치가 되어있어야 한다.)
 ```
@@ -78,7 +81,7 @@ $ sudo gcc log_sub.c -o log_sub -lmosquitto -lmysqlclient
 ```
 ### 🎮 본격적인 게임 시작
 4️⃣ 터미널 하나를 열고, mosquitto를 setting해준다
-    - 매번 게임을 시작할 때마다 해야한다.
+- 매번 게임을 시작할 때마다 해야한다.
 ```
 $ sudo systemctl stop mosquitto
 $ mosquitto -v
@@ -93,7 +96,7 @@ ex) ./liar_server 9876
 $ sudo ./log_sub 
 ```
 7️⃣ 플레이어를 위해 터미널을 하나 열어준다.
-    - 게임은 최소 3명의 플레이어가 있어야 실행할 수 있기 때문에 3개의 터미널을 열어 프로그램을 실행시켜야 한다.
+- 게임은 최소 3명의 플레이어가 있어야 실행할 수 있기 때문에 3개의 터미널을 열어 프로그램을 실행시켜야 한다.
 ```
 $ ./liar_client IP_ADDR PORT_NUM USER_NAME
 ex) ./liar_client 10.0.2.15 9876 mj
